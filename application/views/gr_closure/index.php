@@ -1,0 +1,37 @@
+<?php $this->load->view('includes/header'); ?>
+<div class="page-wrapper">
+    <div class="container-fluid bg-container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4 class="card-title text-left">GR Closure</h4>
+                            </div>
+                            <div class="col-md-8 float-right">
+                                <ul class="nav nav-pills float-right">
+                                    <li class="nav-item"> 
+                                        <button onclick="statusTab('grClosureTable',0,'getExportDtHeader','grClosure');" class=" btn waves-effect waves-light btn-outline-danger active" style="outline:0px" data-toggle="tab" aria-expanded="false">Unmapped SB</button>
+                                    </li>
+                                    <li class="nav-item"> 
+                                        <button onclick="statusTab('grClosureTable',1,'getExportDtHeader','unmappedFIRC');" class=" btn waves-effect waves-light btn-outline-warning" style="outline:0px" data-toggle="tab" aria-expanded="false">Unmapped FIRC</button> 
+                                    </li>
+                                    <li class="nav-item"> 
+                                        <button onclick="statusTab('grClosureTable',2,'getExportDtHeader','grClosure');" class=" btn waves-effect waves-light btn-outline-success" style="outline:0px" data-toggle="tab" aria-expanded="false">Complete GR</button> 
+                                    </li>
+                                </ul>
+                            </div>                  
+                        </div>                                         
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id='grClosureTable' class="table table-bordered ssTable" data-url='/getDTRows'></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+<?php $this->load->view('includes/footer'); ?>
