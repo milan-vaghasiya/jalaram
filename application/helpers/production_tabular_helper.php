@@ -349,7 +349,7 @@ function getProductionHeader($page){
     $data['purchaseCostReq'][] = ["name"=>"Part Code"];
     $data['purchaseCostReq'][] = ["name"=>"Part Name"];
     $data['purchaseCostReq'][] = ["name"=>"Material Grade"];
-    $data['purchaseCostReq'][] = ["name"=>"Dimension"];
+    // $data['purchaseCostReq'][] = ["name"=>"Dimension"];
     $data['purchaseCostReq'][] = ["name"=>"MOQ"];
     $data['purchaseCostReq'][] = ["name"=>"Gross Wt"];
     $data['purchaseCostReq'][] = ["name"=>"Finish Wt"];
@@ -1018,6 +1018,6 @@ function getMfgCostReq($data){
     $reqParam = "{'id' : ".$data->id.", 'modal_id' : 'modal-lg', 'form_id' : 'addMfgCost', 'title' : 'Mfg. Costing', 'fnEdit':'addMfgCost','button':'close'}";
     $rmCost = '<a href="javascript:void(0)" class="btn btn-primary btn-delete permission-modify" onclick="edit('.$reqParam.');" datatip="Mfg. Costing" flow="down"><i class="fas fa-paper-plane"></i></a>'; 
     $action = getActionButton($rmCost);
-    return [$action,$data->sr_no,$data->enq_number,$data->party_name,$data->item_code,$data->item_name,$data->material_grade,$data->dimension,$data->moq,$data->gross_wt,$data->finish_wt,($data->moq * $data->gross_wt)];
+    return [$action,$data->sr_no,$data->enq_number,$data->party_name,$data->item_code,$data->item_name,$data->material_grade,$data->moq,$data->gross_wt,$data->finish_wt,($data->moq * $data->gross_wt)];
 }
 ?>

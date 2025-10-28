@@ -33,6 +33,7 @@ function getConfigDtHeader($page)
     $data['materialGrade'][] = ["name"=>"Material Grade"];
     $data['materialGrade'][] = ["name"=>"scrap Group"];
     $data['materialGrade'][] = ["name"=>"Colour Code"];
+    $data['materialGrade'][] = ["name"=>"Density"];
 	
     /* Attendance Policy Header */
     $data['attendancePolicy'][] = ["name"=>"Action","style"=>"width:5%;"];
@@ -198,7 +199,7 @@ function getMaterialData($data){
     $deleteButton = '<a class="btn btn-danger btn-delete" href="javascript:void(0)" onclick="trash('.$deleteParam.');" datatip="Remove" flow="down"><i class="ti-trash"></i></a>';
 	
 	$action = getActionButton($editButton.$deleteButton);
-    return [$action,$data->sr_no,$data->material_grade,$data->group_name,$data->color_code];
+    return [$action,$data->sr_no,$data->material_grade,$data->group_name,$data->color_code,$data->density];
 }
 
 /* get Attendance Policy Data */

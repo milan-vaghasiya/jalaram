@@ -6,6 +6,11 @@
                 <label for="material_grade">Material Grade</label>
                 <input type="text" name="material_grade" id="material_grade" class="form-control req" value="<?= (!empty($dataRow->material_grade)) ? $dataRow->material_grade : "" ?>">
             </div>
+
+            <div class="col-md-12 form-group">
+                <label for="density">Density</label>
+                <input type="text" name="density" id="density" class="form-control floatOnly" value="<?= (!empty($dataRow->density)) ? $dataRow->density : "" ?>">
+            </div>
            
             <div class="col-md-12 form-group">
                 <label for="scrap_group">Scrap Group</label>

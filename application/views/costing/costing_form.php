@@ -48,7 +48,27 @@
                         <tr>
                             <th>Dimension</th>
                             <td>
-                                <?=(!empty($dataRow->dimension)?$dataRow->dimension:'')?>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>Shape</th>
+                                        <td><?= $shape ?? '';?></td>
+                                    </tr>
+
+                                    <tr class="first_section">
+                                        <th class="first_section_label">Diameter (mm)</th>
+                                        <td><?= $dataRow->field1 ?? '';?></td> 
+                                    </tr>
+                                    
+                                    <tr class="second_section d-none">
+                                        <th class="second_section_label">Width (mm)</th>
+                                        <td><?= $dataRow->field2 ?? '';?></td> 
+                                    </tr>
+
+                                    <tr class="third_section">
+                                        <th class="third_section_label">Length (mm)</th>
+                                        <td><?= $dataRow->field3 ?? '';?></td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                          <tr>
@@ -361,5 +381,34 @@ $(document).ready(function() {
         $("#total_final_cost").val(total_final_cost.toFixed(2));
     });
 
+    //Weight Calculation hide show fields
+    var shape = "<?= $dataRow->shape;?>";
+    if(shape == 'round_dia'){
+        $('.first_section_label').text('Diameter (mm)');
+        $('.second_section').addClass('d-none');
+    }
+    else if(shape == 'square'){
+        $('.first_section_label').text('Width (mm)');
+        $('.second_section').addClass('d-none');
+    }
+    else if(shape == 'rectangle'){
+        $('.first_section_label').text('Width (mm)');
+        $('.second_section_label').text('Height / Thickness (mm)');
+        $('.second_section').removeClass('d-none');
+    }
+    else if(shape == 'pipe'){
+        $('.first_section_label').text('Outer Diameter (mm)');
+        $('.second_section_label').text('Inner Diameter (mm)');
+        $('.second_section').removeClass('d-none');
+    }
+    else if(shape == 'hex'){
+        $('.first_section_label').text('Flat to Flat (mm)');
+        $('.second_section').addClass('d-none');
+    }
+    else if(shape == 'sheet'){
+        $('.first_section_label').text('Width (mm)');
+        $('.second_section_label').text('Height / Thickness (mm)');
+        $('.second_section').removeClass('d-none');
+    }
 });
 </script>

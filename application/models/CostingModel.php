@@ -176,7 +176,7 @@ class CostingModel extends MasterModel{
 		$data['searchCol'][] = "trans_child.item_code";
 		$data['searchCol'][] = "trans_child.item_name";
 		$data['searchCol'][] = "material_master.material_grade";
-		$data['searchCol'][] = "product_costing.dimension";
+		// $data['searchCol'][] = "product_costing.dimension";
 		$data['searchCol'][] = "product_costing.moq";
 		$data['searchCol'][] = "product_costing.gross_wt";
 		$data['searchCol'][] = "product_costing.finish_wt";

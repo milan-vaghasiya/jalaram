@@ -13,6 +13,7 @@ class MaterialGradeModel extends MasterModel{
         $data['searchCol'][] = "material_master.material_grade";
         $data['searchCol'][] = "item_master.item_name";
         $data['searchCol'][] = "material_master.color_code";
+        $data['searchCol'][] = "material_master.density";
         
 		$columns =array('','','material_master.material_grade','item_master.item_name','material_master.color_code');
 		if(isset($data['order'])){$data['order_by'][$columns[$data['order'][0]['column']]] = $data['order'][0]['dir'];}

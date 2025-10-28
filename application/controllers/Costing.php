@@ -111,9 +111,17 @@ class Costing extends MY_Controller
         $data = $this->input->post();
         $errorMessage = array();
         if(empty($data['grade_id'])){ $errorMessage['grade_id'] = "Grade is required."; }
-        if(empty($data['dimension'])){ $errorMessage['dimension'] = "Dimension is required."; }
+        // if(empty($data['dimension'])){ $errorMessage['dimension'] = "Dimension is required."; }
+        if(empty($data['shape'])){ $errorMessage['shape'] = "Shape is required."; }
         if(empty($data['moq'])){ $errorMessage['moq'] = "MOQ is required."; }
         if(empty($data['gross_wt'])){ $errorMessage['gross_wt'] = "Weight is required."; }
+
+        if(empty($data['field1'])){ $errorMessage['field1'] = "This field is required."; }
+        
+        if(empty($data['field2']) && (!in_array($_POST['shape'],['round_dia','square','hex']))){ 
+            $errorMessage['field2'] = "This field is required."; 
+        }        
+        if(empty($data['field3'])){ $errorMessage['field3'] = "This field is required."; }
 
         if(!empty($errorMessage)):
             $this->printJson(['status'=>0,'message'=>$errorMessage]);
@@ -144,6 +152,11 @@ class Costing extends MY_Controller
         $data = $this->input->post();
         $this->data['dataRow'] = $this->costingModel->getCostingData(['id'=>$data['id'],'single_row'=>1]);
         $this->data['mfgProcessList'] = $this->costingModel->getProcessCostingData(['cost_id'=>$data['id']]);
+
+        $shapes = $this->shapes();
+        $this->data['shape'] = $shapes[$this->data['dataRow']->shape];
+        
+        // print_r($this->data['dataRow']); exit;
         $this->load->view('costing/costing_form',$this->data);
     }
 
@@ -190,14 +203,19 @@ class Costing extends MY_Controller
     public function addRmCost(){
         $data = $this->input->post();
         $this->data['dataRow'] = $this->costingModel->getCostingData(['id'=>$data['id'],'single_row'=>1]);
+
+        $shapes = $this->shapes();
+        $this->data['shape'] = $shapes[$this->data['dataRow']->shape];
+
         $this->load->view('costing/rm_cost',$this->data);
     }
 
     public function saveRmCost(){
         $data = $this->input->post();
         $errorMessage = array();
-        if(empty($data['dimension'])){ $errorMessage['dimension'] = "Dimension is required."; }
+        // if(empty($data['dimension'])){ $errorMessage['dimension'] = "Dimension is required."; }
         if(empty($data['rm_rate'])){ $errorMessage['rm_rate'] = "Rate is required."; }
+        if(empty($data['gross_wt'])){ $errorMessage['gross_wt'] = "Gross weight is required."; }
 
         if(!empty($errorMessage)):
             $this->printJson(['status'=>0,'message'=>$errorMessage]);
@@ -349,6 +367,18 @@ class Costing extends MY_Controller
         $data= $this->input->post();
         $this->data['id'] = $data['id'];
         $this->load->view('costing/wc_form',$this->data);
+    }
+
+    public function shapes(){
+        $shapes = [
+            'round_dia' => 'Round Bar',
+            'square' => 'Square Bar',
+            'rectangle' => 'Rectangle Bar',
+            'pipe' => 'Pipe / Tube',
+            'hex' => 'Hexagonal Bar',
+            'sheet' => 'Sheet / Plate'
+        ];
+        return $shapes;
     }
 }
 ?>
