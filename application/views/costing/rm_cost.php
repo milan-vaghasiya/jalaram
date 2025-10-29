@@ -26,6 +26,7 @@
     <div class="col-md-12 form-group">
         <div class="row">
             <input type="hidden" name="id" value="<?=$dataRow->id?>">
+            <input type="hidden" name="shape" value="<?=$dataRow->shape?>">
 
             <!-- <div class="col-md-6 form-group">
                 <label for="dimension">Dimension</label>
@@ -35,16 +36,19 @@
             <div class="col-md-6 form-group first_section">
                 <label class="first_section_label" for="first_section_label">Diameter (mm)</label>
                 <input type="text" name="field1" id="first_section_label" class="form-control floatOnly req" value="<?= $dataRow->field1 ?? '';?>" placeholder="Diameter (mm)"> 
+                <div class="error field1"></div>
             </div>
             
             <div class="col-md-6 form-group second_section d-none">
                 <label class="second_section_label" for="second_section_label">Width (mm)</label>
                 <input type="text" name="field2" id="second_section_label" class="form-control floatOnly req" value="<?= $dataRow->field2 ?? '';?>" placeholder="Width (mm)"> 
+                <div class="error field2"></div>
             </div>
 
             <div class="col-md-6 form-group third_section">
                 <label class="third_section_label" for="third_section_label">Length (mm)</label>
                 <input type="text" name="field3" id="third_section_label" class="form-control floatOnly req" value="<?= $dataRow->field3 ?? '';?>" placeholder="Length (mm)">
+                <div class="error field3"></div>
             </div>
             
             <div class="col-md-6 form-group">
