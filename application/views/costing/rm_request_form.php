@@ -62,6 +62,11 @@
         </div>
 
         <div class="col-md-6 form-group">
+            <label for="total_gross_wt">Total Gross Weight (kg)</label>
+            <input type="text" name="total_gross_wt" class="form-control floatOnly req" value="<?=$dataRow->total_gross_wt ?? '';?>"> 
+        </div>
+
+        <div class="col-md-6 form-group">
             <label>&nbsp;</label><br>
             <button type="button" id="calc" class="btn btn-primary btn-block" >Calculate Weight</button>
         </div>
@@ -164,12 +169,17 @@ $(document).ready(function(){
         
         let totalWeight = volume * density; // kg
         let weightPerMeter = (volume / length) * density; // kg/m
+
+        let moq = parseFloat($('[name="moq"]').val());
+        let totalGrossWeight = totalWeight * moq;
         
         if(!isNaN(totalWeight) && totalWeight > 0){
             $('[name="gross_wt"]').val(totalWeight.toFixed(3));
+            $('[name="total_gross_wt"]').val(totalGrossWeight.toFixed(3));
             $('#result').text('');
         } else {
             $('[name="gross_wt"]').val(0);
+            $('[name="total_gross_wt"]').val(0);
             $('#result').text('Invalid inputs.');
         }
     });

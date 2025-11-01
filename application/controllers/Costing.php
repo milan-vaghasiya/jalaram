@@ -115,6 +115,7 @@ class Costing extends MY_Controller
         if(empty($data['shape'])){ $errorMessage['shape'] = "Shape is required."; }
         if(empty($data['moq'])){ $errorMessage['moq'] = "MOQ is required."; }
         if(empty($data['gross_wt'])){ $errorMessage['gross_wt'] = "Weight is required."; }
+        if(empty($data['total_gross_wt'])){ $errorMessage['total_gross_wt'] = "Total weight is required."; }
 
         if(empty($data['field1'])){ $errorMessage['field1'] = "This field is required."; }        
         if(empty($data['field2']) && (in_array($_POST['shape'],['rectangle','pipe','sheet']))){ 

@@ -71,10 +71,16 @@
                                 </table>
                             </td>
                         </tr>
-                         <tr>
+                        <tr>
                             <th>Gross Weight Piece</th>
                             <td>
                                 <input type="text" name="gross_wt" id="gross_wt" value="<?=$dataRow->gross_wt?>" class="form-control" readonly>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Total Gross Weight</th>
+                            <td>
+                                <input type="text" name="total_gross_wt" id="total_gross_wt" value="<?=$dataRow->total_gross_wt?>" class="form-control" readonly>
                             </td>
                         </tr>
                         <tr>
