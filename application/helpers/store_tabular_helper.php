@@ -96,6 +96,7 @@ function getStoreDtHeader($page){
     $data['grn'][] = ["name"=>"Heat/Batch No."];
     $data['grn'][] = ["name"=>"Colour Code"];	
     $data['grn'][] = ["name"=>"Location"];	
+    $data['grn'][] = ["name"=>"Remark"];	
 	
 	 /* General Material Issue */
     $data['generalIssue'][] = ["name"=>"Action","style"=>"width:5%;","textAlign"=>"center"];
@@ -351,7 +352,7 @@ function getGRNData($data){
 	if(!empty($data->po_no) and !empty($data->po_prefix)):
 		$order_no = getPrefixNumber($data->po_prefix,$data->po_no);
 	endif;
-    return [$action,$data->sr_no,getPrefixNumber($data->grn_prefix,$data->grn_no),$data->challan_no,formatDate($data->grn_date),$order_no,$data->party_name,$data->item_name,$data->qty,$data->unit_name,$data->qty_kg,$data->product_code,$data->batch_no,$data->color_code,$data->store_name];
+    return [$action,$data->sr_no,getPrefixNumber($data->grn_prefix,$data->grn_no),$data->challan_no,formatDate($data->grn_date),$order_no,$data->party_name,$data->item_name,$data->qty,$data->unit_name,$data->qty_kg,$data->product_code,$data->batch_no,$data->color_code,$data->store_name,$data->item_remark];
 }
 
 /* General Issue Table Data */
