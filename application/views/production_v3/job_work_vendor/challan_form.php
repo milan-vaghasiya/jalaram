@@ -2,11 +2,11 @@
     <input type="hidden" name="vendor_id" id="vendor_id" value="<?=$party_id?>" />
     <input type="hidden" name="id" id="id" value="" />
     <div class="row">
-        <div class="col-md-3 form-group">
+        <div class="col-md-2 form-group">
             <label for="trans_date"> Challan Date</label>
             <input type="date" name="trans_date" id="trans_date" class="form-control req" min="<?= date("Y-m-d");?>" value="<?=date("Y-m-d")?>" >
         </div>
-        <div class="col-md-3 form-group">
+        <div class="col-md-2 form-group">
             <label for="trans_number"> Challan No</label>
             <input type="text" name="trans_number" id="trans_number" class="form-control req" value="<?=getPrefixNumber($trans_prefix,$trans_no)?>" readonly >
 
@@ -26,6 +26,11 @@
                 ?>
             </select>
         </div>
+        <div class="col-md-5 form-group">
+            <label for="remark"> Remark</label>
+            <input type="text" name="remark" id="remark" class="form-control">
+        </div>
+
         <div class="col-md-12 form-group">
             <!-- <div class="table-responsive"> -->
                 <div class="error orderError"></div>

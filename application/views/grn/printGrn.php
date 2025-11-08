@@ -34,7 +34,7 @@
         <table class="table item-list-bb" style="margin-top:25px;">
 			<tr>
 				<th style="width:40px;">No.</th>
-				<th style="width:110px;">Item Description</th>
+				<th style="width:200px;">Item Description</th>
 				<th style="width:50px;">Qty(UOM)</th>
 				<th style="width:50px;">Qty(kg)</th>
 				<th style="width:110px;">F.G(Used In)</th>
@@ -48,6 +48,9 @@
 				if(!empty($grnData->itemData)):
 					foreach($grnData->itemData as $row): 
 						$item_name = str_replace(["\r\n", "\r", "\n"], "<br/>", $row->item_name);
+						if(!empty($row->item_remark)){
+							$item_name .= '<br><b>Remark:</b> '.$row->item_remark;
+						}
                         $row->product_code = ''; $c=0;
                         if(!empty($row->fgitem_id)):
                             $la = explode(",",$row->fgitem_id);

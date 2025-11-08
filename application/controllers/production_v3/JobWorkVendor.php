@@ -224,6 +224,7 @@ class JobWorkVendor extends MY_Controller{
 				'trans_number' => $data['trans_number'],
 				'vendor_id' => $data['vendor_id'],
 				'material_data' => $data['material_data'],
+				'remark' => !empty($data['remark']) ? $data['remark'] : NULL,
 				'created_by' => $this->loginId
 			];
 
@@ -430,10 +431,12 @@ class JobWorkVendor extends MY_Controller{
 			$itemList.='<th class="text-center" style="font-size:14px;">'.sprintf('%0.0f', $totalOut).'</th>';
 		$itemList.='</tr>';	
 		
+		$remark = (!empty($jobData->remark) ? '<br><b>Remark:</b> '.$jobData->remark : '');
 		
 		$itemList.='<tr>
 			<th class="text-left" style="vertical-align:top;height:50px;padding:5px;font-weight: normal;" colspan="7">
 				<b>Material Details : </b>'.$materialDetails.'
+				'.$remark.'
 			</th>
 		</tr>';
 		
